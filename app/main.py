@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="Backend Telemetry")
+from app.api.health import router as health_router
 
-@app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+app = FastAPI(title="Backend Telemetry")
+app.include_router(health_router)
