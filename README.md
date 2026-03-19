@@ -11,7 +11,7 @@ git clone https://github.com/LightAbyss/backend_telemetry.git
 cd backend_telemetry
 ```
 
-2. Instalar las dependencias utilizando uv
+2. Instalar las dependencias utilizando `uv`
 ```bash
 uv sync
 ```
@@ -24,16 +24,16 @@ uv run uvicorn app.main:app
 
 Para ejecutar el servidor, y que este detecte cambios en el código se utiliza:
 ```bash
-uv  run uvicorn app.main:app --reload
+uv run uvicorn app.main:app --reload
 ```
 
 ## Endpoints disponibles
 
-### /health
+### `/health`
 Permite verificar que la aplicación está en ejecución y respondiendo correctamente.
 
 ## Estructura inicial
 
 - `app/main.py`: punto de entrada de la aplicación
 - `app/api/`: routers y endpoints
-- `tests/`: pruebas
+- `tests/`: pruebas del proyecto
