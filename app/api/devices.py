@@ -8,7 +8,7 @@ router = APIRouter()
 # In-memory storage for registered devices
 registered_devices: dict[str, DeviceCreateResponse] = {}
 
-@router.post("/devices", status_code=201)
+@router.post("/devices", status_code=201, response_model=DeviceCreateResponse)
 def register_device(device: DeviceCreate) -> DeviceCreateResponse:
     if device.device_id in registered_devices:
         raise HTTPException(status_code=409, detail="Device already registered")
