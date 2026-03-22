@@ -23,3 +23,14 @@ def register_device(device: DeviceCreate) -> DeviceCreateResponse:
     )
 
     return registered_devices[device.device_id]
+
+@router.get("/devices/{device_id}", response_model=DeviceCreateResponse)
+def get_device(device_id: str) -> DeviceCreateResponse:
+    if device_id not in registered_devices:
+        raise HTTPException(status_code=404, detail="Device not found")
+
+    return registered_devices[device_id]
+
+@router.get("/devices", response_model=list[DeviceCreateResponse])
+def list_devices() -> list[DeviceCreateResponse]:
+    return list(registered_devices.values())
