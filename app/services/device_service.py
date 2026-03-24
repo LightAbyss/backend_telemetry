@@ -15,7 +15,8 @@ def register_device(device: DeviceCreate) -> DeviceCreateResponse:
         id=new_id,
         device_id=device.device_id,
         firmware_version=device.firmware_version,
-        device_type=device.device_type
+        device_type=device.device_type,
+        description=device.description
     )
 
     return registered_devices[device.device_id]
