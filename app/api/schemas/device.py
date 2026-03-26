@@ -1,11 +1,11 @@
 from pydantic import BaseModel, Field, field_validator
 import re
 
-class DeviceCreate(BaseModel):
+class DeviceBase(BaseModel):
     device_id: str = Field(..., min_length=1)
     firmware_version: str = Field(...)
     device_type: str = Field(..., min_length=1)
-    description: str | None = Field(default=None)
+    description: str | None = Field(None)
 
     @field_validator("device_id", "device_type", mode="before")
     def normalize_and_validate_string(cls, value) -> str:
@@ -55,9 +55,9 @@ class DeviceCreate(BaseModel):
         else:
             raise ValueError("Must not be empty or whitespace")
 
-class DeviceCreateResponse(BaseModel):
+
+class DeviceCreate(DeviceBase):
+    pass
+    
+class DeviceCreateResponse(DeviceBase):
     id: str
-    device_id: str
-    firmware_version: str
-    device_type: str
-    description: str | None
